@@ -1,3 +1,4 @@
+/// <reference path='../typings/tsd.d.ts'/>
 import { App, Platform, Config } from 'ionic-framework/ionic';
 import { TabsPage } from './pages/tabs/tabs';
 import { SpiderListPage } from './pages/spiderlist/spiderlist';
