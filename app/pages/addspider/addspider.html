@@ -1,0 +1,38 @@
+<ion-navbar *navbar>
+    <ion-title>Add Spider</ion-title>
+</ion-navbar>
+<ion-content class="page3">
+    <ion-list>
+        <ion-input stacked-label>
+            <ion-label>Picture</ion-label>
+            <input type="text" value="">
+        </ion-input>
+        <ion-input stacked-label>
+            <ion-label>Species</ion-label>
+            <input type="text" value="">
+        </ion-input>
+        <!--
+        <ion-input stacked-label>
+            <ion-label>Sex</ion-label>
+            <input type="text" value="">
+        </ion-input>
+        <ion-select stacked-label>
+             <ion-label>Sex</ion-label>
+             <ion-option value="F">Female</ion-option>
+             <ion-option value="M">Male</ion-option>
+             <ion-option value="X" checked="true">Unknown</ion-option>
+        </ion-select>
+        <ion-input stacked-label>
+            <ion-label>Date Received</ion-label>
+            <input type="date" value="">
+        </ion-input>
+        <ion-input stacked-label>
+            <ion-label>Date Born</ion-label>
+            <input type="date" value="">
+        </ion-input>
+        -->
+        <button block (click)="takePicture()">Take Picture</button>
+        <button block (click)="save($event)">Save</button>
+        <button block secondary outline>Cancel</button>
+    </ion-list>
+</ion-content>
