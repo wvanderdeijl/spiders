@@ -3,13 +3,17 @@
 </ion-navbar>
 <ion-content class="page3">
     <ion-list>
+        <!--<ion-icon name="camera"></ion-icon>-->
+        <ion-card *ngIf="model.img">
+            <img [src]="imgurl" />
+        </ion-card>
         <ion-input stacked-label>
-            <ion-label>Picture</ion-label>
-            <input type="text" value="">
+            <ion-label>Name</ion-label>
+            <input type="text" [(ngModel)]="model.name">
         </ion-input>
         <ion-input stacked-label>
             <ion-label>Species</ion-label>
-            <input type="text" value="">
+            <input type="text" [(ngModel)]="model.species" required>
         </ion-input>
         <!--
         <ion-input stacked-label>
@@ -32,7 +36,7 @@
         </ion-input>
         -->
         <button block (click)="takePicture()">Take Picture</button>
-        <button block (click)="save($event)">Save</button>
+        <button block (click)="save()">Save</button>
         <button block secondary outline>Cancel</button>
     </ion-list>
 </ion-content>

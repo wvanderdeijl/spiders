@@ -15,5 +15,9 @@
     "typescript": "^1.7.3"
   },
   "name": "spiders",
-  "description": "spiders: An Ionic project"
+  "description": "spiders: An Ionic project",
+  "cordovaPlugins": [
+    "org.apache.cordova.camera"
+  ],
+  "cordovaPlatforms": []
 }

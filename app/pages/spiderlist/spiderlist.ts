@@ -6,7 +6,7 @@ export class SpiderListPage {
 
     constructor(private nav: NavController) { }
 
-    addSpiderTapped(event) {
+    addSpiderTapped() {
         this.nav.push(AddSpiderPage, {}, {}, undefined);
     }
 

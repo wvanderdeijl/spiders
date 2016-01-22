@@ -1,13 +1,22 @@
 import { NavController, Page, ActionSheet } from 'ionic-framework/ionic';
+import { CameraService } from '../../services/CameraService';
+import { Spider } from './spider';
 
-@Page({ templateUrl: 'build/pages/addspider/addspider.html' })
+@Page({
+    templateUrl: 'build/pages/addspider/addspider.html'
+})
 export class AddSpiderPage {
 
-    constructor(private nav: NavController) { }
+    public model = new Spider();
 
-    save(event: UIEvent) {
+    constructor(private nav: NavController, private camera: CameraService) {
+        console.log('AddSpiderPage constructor');
+    }
+
+    save() {
         console.log('SAVING SPIDER');
-        console.dir(event);
+        console.dir(this.model);
+        console.log(JSON.stringify(this.model));
     }
 
     takePicture() {
@@ -20,8 +29,18 @@ export class AddSpiderPage {
         this.nav.present(actionSheet);
     }
 
-    private getPicture(source) {
-        console.log('should be getting picture from', source);
+    private getPicture(sourceType: number) {
+        return this.camera.getPicture({
+            sourceType, destinationType: Camera.DestinationType.DATA_URL, targetWidth: 1334, targetHeight: 1334
+        })
+            .then((image: string) => {
+                console.log('got a picture');
+                this.model.img = image;
+            });
+    }
+
+    public get imgurl() {
+        return this.model.img && `data:image/jpeg;base64,${this.model.img}`
     }
 
 }
