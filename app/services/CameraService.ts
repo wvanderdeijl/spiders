@@ -1,7 +1,7 @@
-import {Injectable} from 'angular2/core';
+import { Injectable } from 'angular2/core';
 
 @Injectable()
-export class CameraService {
+export default class CameraService {
 
     constructor() { }
     getPicture(options: CameraOptions) {

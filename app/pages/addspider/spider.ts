@@ -1,4 +1,4 @@
-export class Spider {
+export default class Spider {
 
     public name: string;
     public species: string;

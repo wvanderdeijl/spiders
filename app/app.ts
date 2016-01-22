@@ -1,8 +1,8 @@
 /// <reference path='../typings/tsd.d.ts'/>
 import { App, Platform, Config } from 'ionic-framework/ionic';
 import { TabsPage } from './pages/tabs/tabs';
-import { SpiderListPage } from './pages/spiderlist/spiderlist';
-import { CameraService } from './services/CameraService';
+import SpiderListPage from './pages/spiderlist/spiderlist';
+import CameraService from './services/CameraService';
 
 @App({
     template: '<ion-nav id="nav" [root]="root" #content></ion-nav>',
