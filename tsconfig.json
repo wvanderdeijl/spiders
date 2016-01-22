@@ -9,7 +9,8 @@
     "sourceMap": false,
     "sourceRoot": "",
     "inlineSourceMap": false,
-    "inlineSources": false
+    "inlineSources": false,
+    "noImplicitAny": true
   },
   "files": [
     "app/app.ts"
