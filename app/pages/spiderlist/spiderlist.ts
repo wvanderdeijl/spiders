@@ -13,7 +13,7 @@ export default class SpiderListPage {
     ) { }
 
     onPageLoaded() {
-        this.storage.spiders$.subscribe(spiders => this.model = spiders);
+        this.storage.data$.subscribe(spiders => this.model = spiders);
         this.storage.read();
     }
 

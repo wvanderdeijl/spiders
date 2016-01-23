@@ -2,14 +2,14 @@
     <ion-title>Your Spiders</ion-title>
 </ion-navbar>
 
-<ion-content class="spiderlist" scroll="false">
+<ion-content class="spiderlist">
     <ion-card *ngFor="#spider of model">
         <div *ngIf="spider.img">
             <img [src]="imgurl(spider)" />
         </div>
         <ion-card-content>
             <h2 class="card-title">{{spider.name}}</h2>
-            <p>More text</p>
+            <p *ngIf="spider.genus || spider.species">{{spider.genus}} {{spider.species}}</p>
         </ion-card-content>
         <ion-item actions class="demo-card">
             <button clear item-left danger>

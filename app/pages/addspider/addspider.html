@@ -13,7 +13,11 @@
         </ion-input>
         <ion-input stacked-label>
             <ion-label>Species</ion-label>
-            <input type="text" [(ngModel)]="model.species" required>
+            <!-- [navPush]="speciesSelectPage" and (click) only works when pressing longer -->
+            <a ion-item (tap)="selectSpecies()">
+                <span *ngIf="!model.genus && !model.species">Unknown</span>
+                {{model.genus}} {{model.species}}
+            </a>
         </ion-input>
         <!--
         <ion-input stacked-label>

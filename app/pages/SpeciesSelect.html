@@ -1,0 +1,16 @@
+<ion-navbar *navbar>
+    <ion-title>Select Species</ion-title>
+</ion-navbar>
+
+<ion-content class="speciesselect">
+    <ion-list>
+        <span *ngFor="#genus of model">
+            <ion-list-header>{{genus.name}}</ion-list-header>
+            <ion-item *ngFor="#species of genus.species" (tap)="selectSpecies(genus,species)">{{species}}</ion-item>
+        </span>
+    </ion-list>
+</ion-content>
+
+<<button fab fab-right fab-bottom (click)="addSpecies()">
+    <ion-icon name='add'></ion-icon>
+</button>

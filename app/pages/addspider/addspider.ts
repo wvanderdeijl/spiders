@@ -1,6 +1,7 @@
 import { NavController, Page, ActionSheet } from 'ionic-framework/ionic';
 import CameraService from '../../services/CameraService';
 import SpiderStorageService, { Spider } from '../../services/SpiderStorageService';
+import SpeciesSelectPage from '../SpeciesSelect';
 
 @Page({
     templateUrl: 'build/pages/addspider/addspider.html'
@@ -20,6 +21,10 @@ export default class AddSpiderPage {
     save() {
         this.storage.add(this.model);
         this.nav.pop();
+    }
+
+    selectSpecies() {
+        this.nav.push(SpeciesSelectPage, { spider: this.model }, {}, undefined);
     }
 
     takePicture() {
