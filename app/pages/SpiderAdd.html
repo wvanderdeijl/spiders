@@ -1,46 +1,31 @@
-<ion-navbar *navbar>
+<ion-navbar *navbar back-button-icon="camera">
+    <ion-buttons start>
+        <button nav-pop>Cancel</button>
+    </ion-buttons>
     <ion-title>Add Spider</ion-title>
+    <ion-buttons end>
+        <button (click)="save()">Save</button>
+    </ion-buttons>
 </ion-navbar>
-<ion-content class="page3">
+
+<ion-content class="spider-add">
     <ion-list>
-        <!--<ion-icon name="camera"></ion-icon>-->
-        <ion-card *ngIf="model.img">
+        <ion-card [hidden]="!model.img">
             <img [src]="imgurl" />
         </ion-card>
-        <ion-input stacked-label>
-            <ion-label>Name</ion-label>
-            <input type="text" [(ngModel)]="model.name">
+
+        <ion-item [hidden]="model.img" (tap)="takePicture()">
+            <ion-note>Set Picture</ion-note>
+            <ion-icon item-right name='camera' is-active="false"></ion-icon>
+        </ion-item>
+
+        <ion-input>
+            <input type="text" [(ngModel)]="model.name" placeholder="Name">
         </ion-input>
-        <ion-input stacked-label>
-            <ion-label>Species</ion-label>
-            <!-- [navPush]="speciesSelectPage" and (click) only works when pressing longer -->
-            <a ion-item (tap)="selectSpecies()">
-                <span *ngIf="!model.genus && !model.species">Unknown</span>
-                {{model.genus}} {{model.species}}
-            </a>
-        </ion-input>
-        <!--
-        <ion-input stacked-label>
-            <ion-label>Sex</ion-label>
-            <input type="text" value="">
-        </ion-input>
-        <ion-select stacked-label>
-             <ion-label>Sex</ion-label>
-             <ion-option value="F">Female</ion-option>
-             <ion-option value="M">Male</ion-option>
-             <ion-option value="X" checked="true">Unknown</ion-option>
-        </ion-select>
-        <ion-input stacked-label>
-            <ion-label>Date Received</ion-label>
-            <input type="date" value="">
-        </ion-input>
-        <ion-input stacked-label>
-            <ion-label>Date Born</ion-label>
-            <input type="date" value="">
-        </ion-input>
-        -->
-        <button block (click)="takePicture()">Take Picture</button>
-        <button block (click)="save()">Save</button>
-        <button block secondary outline>Cancel</button>
+
+        <a ion-item (tap)="selectSpecies()">
+            <ion-note [hidden]="model.genus || model.species">Species Unknown</ion-note>
+            {{model.genus}} {{model.species}}
+        </a>
     </ion-list>
 </ion-content>
