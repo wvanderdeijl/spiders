@@ -5,9 +5,9 @@ import SpiderStorageService from '../services/SpiderStorageService';
 import SpeciesSelectPage from './SpeciesSelect';
 
 @Page({
-    templateUrl: 'build/pages/SpiderAdd.html'
+    templateUrl: 'build/pages/SpiderDetail.html'
 })
-export default class AddSpiderPage {
+export default class SpiderDetailPage {
 
     public model: Spider = <any>{};
 
@@ -21,7 +21,7 @@ export default class AddSpiderPage {
         private storage: SpiderStorageService,
         _params: NavParams
     ) {
-        console.log('AddSpiderPage constructor');
+        console.log('SpiderDetailPage constructor');
         this.editmode = _params.get('mode') === 'edit';
         this.createmode = _params.get('mode') === 'create';
         this.viewmode = _params.get('mode') === 'view';
