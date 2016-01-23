@@ -1,4 +1,4 @@
-import { NavController, NavParams, Page } from 'ionic-framework/ionic';
+import { ItemSliding, NavController, NavParams, Page } from 'ionic-framework/ionic';
 import { Spider } from '../types';
 import SpeciesStorageService from '../services/SpeciesStorageService';
 
@@ -28,13 +28,23 @@ export default class SpeciesSelectPage {
                     }
                     return g;
                 }, <Genus[]>[]));
-        this._storage.read();
     }
 
     selectSpecies(genus: Genus, species: string) {
         this._spider.genus = genus.name;
         this._spider.species = species;
         this._nav.pop();
+    }
+
+    deleteSpecies(slidingItem: ItemSliding, genus: Genus, species: string) {
+        this._storage.data$.subscribe(store => {
+            store.forEach((s, idx) => {
+                if (s.genus === genus.name && s.name === species) {
+                    this._storage.remove(idx);
+                }
+            });
+        }).unsubscribe();
+        slidingItem.close();
     }
 
     addSpecies() {

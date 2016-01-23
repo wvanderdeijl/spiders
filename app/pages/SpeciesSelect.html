@@ -4,13 +4,18 @@
 
 <ion-content class="speciesselect">
     <ion-list>
-        <span *ngFor="#genus of model">
+        <div *ngFor="#genus of model">
             <ion-list-header>{{genus.name}}</ion-list-header>
-            <ion-item *ngFor="#species of genus.species" (tap)="selectSpecies(genus,species)">{{species}}</ion-item>
-        </span>
+            <ion-item-sliding *ngFor="#species of genus.species" #slidingItem>
+                <ion-item (click)="selectSpecies(genus,species)">{{species}}</ion-item>
+                <ion-item-options>
+                    <button danger (tap)="deleteSpecies(slidingItem,genus,species)">Delete</button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </div>
     </ion-list>
 </ion-content>
 
-<<button fab fab-right fab-bottom (click)="addSpecies()">
+<button fab fab-right fab-bottom (click)="addSpecies()">
     <ion-icon name='add'></ion-icon>
 </button>
