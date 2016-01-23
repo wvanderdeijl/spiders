@@ -3,16 +3,19 @@
 </ion-navbar>
 
 <ion-content class="speciesselect">
+    <ion-searchbar [(ngModel)]="queryText" (input)="search()" placeholder="   Search"></ion-searchbar>
+
     <ion-list>
-        <div *ngFor="#genus of model">
-            <ion-list-header>{{genus.name}}</ion-list-header>
+        <ion-item-group *ngFor="#genus of model">
+            <ion-item-divider sticky>{{genus.name.toUpperCase()}}</ion-item-divider>
+
             <ion-item-sliding *ngFor="#species of genus.species" #slidingItem>
                 <ion-item (click)="selectSpecies(genus,species)">{{species}}</ion-item>
                 <ion-item-options>
                     <button danger (tap)="deleteSpecies(slidingItem,genus,species)">Delete</button>
                 </ion-item-options>
             </ion-item-sliding>
-        </div>
+        </ion-item-group>
     </ion-list>
 </ion-content>
 
