@@ -1,10 +1,10 @@
 import { NavController, Page, ActionSheet } from 'ionic-framework/ionic';
-import CameraService from '../../services/CameraService';
-import SpiderStorageService, { Spider } from '../../services/SpiderStorageService';
-import SpeciesSelectPage from '../SpeciesSelect';
+import CameraService from '../services/CameraService';
+import SpiderStorageService, { Spider } from '../services/SpiderStorageService';
+import SpeciesSelectPage from './SpeciesSelect';
 
 @Page({
-    templateUrl: 'build/pages/addspider/addspider.html'
+    templateUrl: 'build/pages/SpiderAdd.html'
 })
 export default class AddSpiderPage {
 

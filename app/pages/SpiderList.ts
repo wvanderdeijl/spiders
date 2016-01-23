@@ -1,8 +1,8 @@
 import { Page, NavController } from 'ionic-framework/ionic';
-import AddSpiderPage from '../addspider/addspider.ts';
-import SpiderStorageService, { Spider } from '../../services/SpiderStorageService';
+import AddSpiderPage from './SpiderAdd.ts';
+import SpiderStorageService, { Spider } from '../services/SpiderStorageService';
 
-@Page({ templateUrl: 'build/pages/spiderlist/spiderlist.html' })
+@Page({ templateUrl: 'build/pages/SpiderList.html' })
 export default class SpiderListPage {
 
     public model: Spider[];
