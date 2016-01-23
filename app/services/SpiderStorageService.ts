@@ -1,5 +1,6 @@
 import { Platform } from 'ionic-framework/ionic';
 import { Injectable } from 'angular2/core';
+import { Spider } from '../types';
 import StorageService from './StorageService';
 
 declare let resolveLocalFileSystemURL: any;
@@ -17,9 +18,4 @@ export default class SpiderStorageService extends StorageService<Spider> {
 
 }
 
-export class Spider {
-    name: string;
-    genus: string;
-    species: string;
-    img: string;
-}
+

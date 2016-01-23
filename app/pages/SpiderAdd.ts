@@ -1,6 +1,7 @@
 import { NavController, Page, ActionSheet } from 'ionic-framework/ionic';
+import { Spider } from '../types';
 import CameraService from '../services/CameraService';
-import SpiderStorageService, { Spider } from '../services/SpiderStorageService';
+import SpiderStorageService from '../services/SpiderStorageService';
 import SpeciesSelectPage from './SpeciesSelect';
 
 @Page({
@@ -8,7 +9,7 @@ import SpeciesSelectPage from './SpeciesSelect';
 })
 export default class AddSpiderPage {
 
-    public model = new Spider();
+    public model: Spider = <any>{};
 
     constructor(
         private nav: NavController,

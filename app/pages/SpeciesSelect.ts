@@ -1,6 +1,6 @@
 import { NavController, NavParams, Page } from 'ionic-framework/ionic';
+import { Spider } from '../types';
 import SpeciesStorageService from '../services/SpeciesStorageService';
-import { Spider } from '../services/SpiderStorageService';
 
 
 @Page({ templateUrl: 'build/pages/SpeciesSelect.html' })
@@ -43,6 +43,7 @@ export default class SpeciesSelectPage {
 
 }
 
+// grouped species as we expose them to the view
 interface Genus {
     name: string;
     species: string[];
