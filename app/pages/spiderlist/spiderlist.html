@@ -2,7 +2,29 @@
     <ion-title>Your Spiders</ion-title>
 </ion-navbar>
 
-<ion-content class="spiderlist">
-    TODO: list of spiders
-    <button fab fab-right fab-bottom (click)="addSpiderTapped()"><ion-icon name='add'></ion-icon></button>
+<ion-content class="spiderlist" scroll="false">
+    <ion-card *ngFor="#spider of model">
+        <div *ngIf="spider.img">
+            <img [src]="imgurl(spider)" />
+        </div>
+        <ion-card-content>
+            <h2 class="card-title">{{spider.name}}</h2>
+            <p>More text</p>
+        </ion-card-content>
+        <ion-item actions class="demo-card">
+            <button clear item-left danger>
+                <ion-icon name='star'></ion-icon>Favorite
+            </button>
+            <button clear item danger>
+                <ion-icon name='musical-notes'></ion-icon>Listen
+            </button>
+            <button clear item-right danger>
+                <ion-icon name='share-alt'></ion-icon>Share
+            </button>
+        </ion-item>
+    </ion-card>
 </ion-content>
+
+<button fab fab-right fab-bottom (click)="addSpiderTapped()">
+    <ion-icon name='add'></ion-icon>
+</button>

@@ -17,7 +17,8 @@
   "name": "spiders",
   "description": "spiders: An Ionic project",
   "cordovaPlugins": [
-    "org.apache.cordova.camera"
+    "org.apache.cordova.camera",
+    "cordova-plugin-file"
   ],
   "cordovaPlatforms": []
 }

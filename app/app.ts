@@ -3,10 +3,11 @@ import { App, Platform, Config } from 'ionic-framework/ionic';
 import { TabsPage } from './pages/tabs/tabs';
 import SpiderListPage from './pages/spiderlist/spiderlist';
 import CameraService from './services/CameraService';
+import SpiderStorageService from './services/SpiderStorageService';
 
 @App({
     template: '<ion-nav id="nav" [root]="root" #content></ion-nav>',
-    providers: [CameraService],
+    providers: [CameraService, SpiderStorageService],
     // Check out the config API docs for more info
     // http://ionicframework.com/docs/v2/api/config/Config/
     config: {}
