@@ -1,4 +1,4 @@
-import { NavController, Page, ActionSheet } from 'ionic-framework/ionic';
+import { NavController, NavParams, Page, ActionSheet } from 'ionic-framework/ionic';
 import { Spider } from '../types';
 import CameraService from '../services/CameraService';
 import SpiderStorageService from '../services/SpiderStorageService';
@@ -11,12 +11,23 @@ export default class AddSpiderPage {
 
     public model: Spider = <any>{};
 
+    public editmode: boolean;
+    public createmode: boolean;
+    public viewmode: boolean;
+
     constructor(
         private nav: NavController,
         private camera: CameraService,
-        private storage: SpiderStorageService
+        private storage: SpiderStorageService,
+        _params: NavParams
     ) {
         console.log('AddSpiderPage constructor');
+        this.editmode = _params.get('mode') === 'edit';
+        this.createmode = _params.get('mode') === 'create';
+        this.viewmode = _params.get('mode') === 'view';
+        if (this.viewmode) {
+            this.model = _params.get('data');
+        }
     }
 
     save() {

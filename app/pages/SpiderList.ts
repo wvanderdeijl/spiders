@@ -17,8 +17,8 @@ export default class SpiderListPage {
         this.storage.data$.subscribe(spiders => this.model = spiders);
     }
 
-    addSpiderTapped() {
-        let modal = Modal.create(AddSpiderPage);
+    gotoAddSpider() {
+        let modal = Modal.create(AddSpiderPage, { mode: 'create' });
         // modal.onDismiss(data => {
         //     if (data) {
         //         this.excludeTracks = data;
@@ -30,6 +30,10 @@ export default class SpiderListPage {
 
     imgurl(spider: Spider) {
         return spider.img && `data:image/jpeg;base64,${spider.img}`;
+    }
+
+    gotoDetails(spider: Spider) {
+        this.nav.push(AddSpiderPage, { mode: 'view', data: spider }, {}, undefined);
     }
 
 }
