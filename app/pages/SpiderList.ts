@@ -1,4 +1,4 @@
-import { Page, NavController } from 'ionic-framework/ionic';
+import { Modal, NavController, Page } from 'ionic-framework/ionic';
 import { Spider } from '../types';
 import AddSpiderPage from './SpiderAdd.ts';
 import SpiderStorageService from '../services/SpiderStorageService';
@@ -18,7 +18,14 @@ export default class SpiderListPage {
     }
 
     addSpiderTapped() {
-        this.nav.push(AddSpiderPage, {}, {}, undefined);
+        let modal = Modal.create(AddSpiderPage);
+        // modal.onDismiss(data => {
+        //     if (data) {
+        //         this.excludeTracks = data;
+        //         this.updateSchedule();
+        //     }
+        // });
+        this.nav.present(modal);
     }
 
     imgurl(spider: Spider) {
