@@ -7,7 +7,7 @@
 
     <ion-list>
         <ion-item-group *ngFor="#genus of model">
-            <ion-item-divider sticky>{{genus.name.toUpperCase()}}</ion-item-divider>
+            <ion-item-divider sticky>{{genus.name | uppercase}}</ion-item-divider>
 
             <ion-item-sliding *ngFor="#species of genus.species" #slidingItem>
                 <ion-item (click)="selectSpecies(genus,species)">{{species}}</ion-item>
