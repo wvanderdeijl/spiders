@@ -1,7 +1,7 @@
 import { Platform } from 'ionic-framework/ionic';
 import { Injectable } from 'angular2/core';
 import { Species } from '../types';
-import StorageService from './StorageService';
+import StorageService from './storage.service';
 
 declare let resolveLocalFileSystemURL: any;
 

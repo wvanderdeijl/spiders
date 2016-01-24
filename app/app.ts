@@ -1,10 +1,10 @@
 /// <reference path='../typings/tsd.d.ts'/>
 import { App, Platform, Config } from 'ionic-framework/ionic';
 import { TabsPage } from './pages/tabs/tabs';
-import SpiderListPage from './pages/SpiderList';
-import CameraService from './services/CameraService';
-import SpiderStorageService from './services/SpiderStorageService';
-import SpeciesStorageService from './services/SpeciesStorageService';
+import SpiderListPage from './pages/spider-list.page';
+import CameraService from './services/camera.service';
+import SpiderStorageService from './services/spider-storage.service';
+import SpeciesStorageService from './services/species-storage.service';
 
 @App({
     template: '<ion-nav id="nav" [root]="root" #content></ion-nav>',

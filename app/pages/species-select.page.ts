@@ -1,9 +1,9 @@
 import { ItemSliding, NavController, NavParams, Page } from 'ionic-framework/ionic';
 import { Spider, Species } from '../types';
-import SpeciesStorageService from '../services/SpeciesStorageService';
+import SpeciesStorageService from '../services/species-storage.service';
 
 
-@Page({ templateUrl: 'build/pages/SpeciesSelect.html' })
+@Page({ templateUrl: 'build/pages/species-select.page.html' })
 export default class SpeciesSelectPage {
 
     public model: Genus[];
