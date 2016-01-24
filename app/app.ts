@@ -1,6 +1,5 @@
 /// <reference path='../typings/tsd.d.ts'/>
 import { App, Platform, Config } from 'ionic-framework/ionic';
-import { TabsPage } from './pages/tabs/tabs';
 import SpiderListPage from './pages/spider-list.page';
 import CameraService from './services/camera.service';
 import SpiderStorageService from './services/spider-storage.service';
