@@ -1,9 +1,11 @@
 import { Modal, NavController, NavParams, Page } from 'ionic-framework/ionic';
 import { Spider } from '../types';
 import SpiderEditPage from './spider-edit.page';
+import JpgDataUriPipe from '../pipes/jpg-data-uri.pipe';
 
 @Page({
-    templateUrl: 'build/pages/spider-detail.page.html'
+    templateUrl: 'build/pages/spider-detail.page.html',
+    pipes: [JpgDataUriPipe]
 })
 export default class SpiderDetailPage {
 
@@ -15,10 +17,6 @@ export default class SpiderDetailPage {
     ) {
         console.log('SpiderDetailPage constructor');
         this.model = _params.get('data');
-    }
-
-    public get imgurl() {
-        return this.model.img && `data:image/jpeg;base64,${this.model.img}`;
     }
 
     editSpider() {

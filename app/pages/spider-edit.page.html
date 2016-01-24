@@ -11,7 +11,7 @@
 <ion-content class="spider-edit">
     <ion-list>
         <ion-card *ngIf="model.img">
-            <img [src]="imgurl" />
+            <img [src]="model.img | jpgDataUri" />
         </ion-card>
 
         <ion-item *ngIf="!model.img" (tap)="takePicture()">

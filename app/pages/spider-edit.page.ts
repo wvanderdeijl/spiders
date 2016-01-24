@@ -1,11 +1,13 @@
 import { NavController, NavParams, Page, ActionSheet } from 'ionic-framework/ionic';
 import { Spider } from '../types';
+import JpgDataUriPipe from '../pipes/jpg-data-uri.pipe';
 import CameraService from '../services/camera.service';
 import SpiderStorageService from '../services/spider-storage.service';
 import SpeciesSelectPage from './species-select.page';
 
 @Page({
-    templateUrl: 'build/pages/spider-edit.page.html'
+    templateUrl: 'build/pages/spider-edit.page.html',
+    pipes: [JpgDataUriPipe]
 })
 export default class SpiderEditPage {
 
@@ -62,10 +64,6 @@ export default class SpiderEditPage {
                 console.log('got a picture');
                 this.model.img = image;
             });
-    }
-
-    public get imgurl() {
-        return this.model.img && `data:image/jpeg;base64,${this.model.img}`;
     }
 
 }

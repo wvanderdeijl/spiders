@@ -8,7 +8,7 @@
 <ion-content class="spider-detail">
     <ion-list>
         <ion-card *ngIf="model.img">
-            <img [src]="imgurl" />
+            <img [src]="model.img | jpgDataUri" />
         </ion-card>
 
         <ion-item *ngIf="model.name">{{model.name}}</ion-item>

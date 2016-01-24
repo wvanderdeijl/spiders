@@ -5,7 +5,7 @@
 <ion-content class="spiderlist">
     <ion-card *ngFor="#spider of model" (click)="gotoDetails(spider)">
         <div *ngIf="spider.img">
-            <img [src]="imgurl(spider)" />
+            <img [src]="spider.img | jpgDataUri" />
         </div>
         <ion-card-content>
             <h2 class="card-title">{{spider.name}}</h2>
