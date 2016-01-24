@@ -1,6 +1,7 @@
 import { Modal, NavController, Page } from 'ionic-framework/ionic';
 import { Spider } from '../types';
 import SpiderDetailPage from './spider-detail.page.ts';
+import SpiderEditPage from './spider-edit.page.ts';
 import SpiderStorageService from '../services/spider-storage.service';
 
 @Page({ templateUrl: 'build/pages/spider-list.page.html' })
@@ -18,7 +19,7 @@ export default class SpiderListPage {
     }
 
     gotoAddSpider() {
-        let modal = Modal.create(SpiderDetailPage, { mode: 'create' });
+        let modal = Modal.create(SpiderEditPage);
         // modal.onDismiss(data => {
         //     if (data) {
         //         this.excludeTracks = data;
@@ -33,7 +34,7 @@ export default class SpiderListPage {
     }
 
     gotoDetails(spider: Spider) {
-        this.nav.push(SpiderDetailPage, { mode: 'view', data: spider }, {}, undefined);
+        this.nav.push(SpiderDetailPage, { data: spider }, {}, undefined);
     }
 
 }

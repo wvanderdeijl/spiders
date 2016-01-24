@@ -1,31 +1,18 @@
 <ion-navbar *navbar back-button-icon="camera">
-    <ion-buttons start>
-        <button nav-pop>Cancel</button>
-    </ion-buttons>
-    <ion-title>Add Spider</ion-title>
+    <ion-title>View Spider</ion-title>
     <ion-buttons end>
-        <button (click)="save()">Save</button>
+        <button (click)="editSpider()">Edit</button>
     </ion-buttons>
 </ion-navbar>
 
 <ion-content class="spider-detail">
     <ion-list>
-        <ion-card [hidden]="!model.img">
+        <ion-card *ngIf="model.img">
             <img [src]="imgurl" />
         </ion-card>
 
-        <ion-item [hidden]="model.img" (tap)="takePicture()">
-            <ion-note>Set Picture</ion-note>
-            <ion-icon item-right name='camera' is-active="false"></ion-icon>
-        </ion-item>
+        <ion-item *ngIf="model.name">{{model.name}}</ion-item>
 
-        <ion-input>
-            <input type="text" [(ngModel)]="model.name" placeholder="Name">
-        </ion-input>
-
-        <a ion-item (tap)="selectSpecies()">
-            <ion-note [hidden]="model.genus || model.species">Species Unknown</ion-note>
-            {{model.genus}} {{model.species}}
-        </a>
+        <ion-item *ngIf="model.genus || model.species">{{model.genus}} {{model.species}}</ion-item>
     </ion-list>
 </ion-content>

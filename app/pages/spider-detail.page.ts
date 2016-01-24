@@ -1,8 +1,8 @@
-import { NavController, NavParams, Page, ActionSheet } from 'ionic-framework/ionic';
+import { Modal, NavController, NavParams, Page } from 'ionic-framework/ionic';
 import { Spider } from '../types';
 import CameraService from '../services/camera.service';
 import SpiderStorageService from '../services/spider-storage.service';
-import SpeciesSelectPage from './species-select.page';
+import SpiderEditPage from './spider-edit.page';
 
 @Page({
     templateUrl: 'build/pages/spider-detail.page.html'
@@ -11,10 +11,6 @@ export default class SpiderDetailPage {
 
     public model: Spider = <any>{};
 
-    public editmode: boolean;
-    public createmode: boolean;
-    public viewmode: boolean;
-
     constructor(
         private nav: NavController,
         private camera: CameraService,
@@ -22,45 +18,22 @@ export default class SpiderDetailPage {
         _params: NavParams
     ) {
         console.log('SpiderDetailPage constructor');
-        this.editmode = _params.get('mode') === 'edit';
-        this.createmode = _params.get('mode') === 'create';
-        this.viewmode = _params.get('mode') === 'view';
-        if (this.viewmode) {
-            this.model = _params.get('data');
-        }
-    }
-
-    save() {
-        this.storage.add(this.model);
-        this.nav.pop();
-    }
-
-    selectSpecies() {
-        this.nav.push(SpeciesSelectPage, { spider: this.model }, {}, undefined);
-    }
-
-    takePicture() {
-        let actionSheet = ActionSheet.create({
-            buttons: [
-                { text: 'Take Photo...', handler: () => this.getPicture(Camera.PictureSourceType.CAMERA) },
-                { text: 'Choose from Library...', handler: () => this.getPicture(Camera.PictureSourceType.PHOTOLIBRARY) },
-                { text: 'Cancel', style: 'cancel' }]
-        });
-        this.nav.present(actionSheet);
-    }
-
-    private getPicture(sourceType: number) {
-        return this.camera.getPicture({
-            sourceType, destinationType: Camera.DestinationType.DATA_URL, targetWidth: 1334, targetHeight: 1334
-        })
-            .then((image: string) => {
-                console.log('got a picture');
-                this.model.img = image;
-            });
+        this.model = _params.get('data');
     }
 
     public get imgurl() {
         return this.model.img && `data:image/jpeg;base64,${this.model.img}`
+    }
+
+    editSpider() {
+        let modal = Modal.create(SpiderEditPage, { data: this.model });
+        // modal.onDismiss(data => {
+        //     if (data) {
+        //         this.excludeTracks = data;
+        //         this.updateSchedule();
+        //     }
+        // });
+        this.nav.present(modal);
     }
 
 }
