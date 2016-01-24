@@ -10,23 +10,17 @@ export default class SpiderListPage {
     public model: Spider[];
 
     constructor(
-        private nav: NavController,
-        private storage: SpiderStorageService
+        private _nav: NavController,
+        private _storage: SpiderStorageService
     ) { }
 
     onPageLoaded() {
-        this.storage.data$.subscribe(spiders => this.model = spiders);
+        this._storage.data$.subscribe(spiders => this.model = spiders);
     }
 
     gotoAddSpider() {
         let modal = Modal.create(SpiderEditPage);
-        // modal.onDismiss(data => {
-        //     if (data) {
-        //         this.excludeTracks = data;
-        //         this.updateSchedule();
-        //     }
-        // });
-        this.nav.present(modal);
+        this._nav.present(modal);
     }
 
     imgurl(spider: Spider) {
@@ -34,7 +28,7 @@ export default class SpiderListPage {
     }
 
     gotoDetails(spider: Spider) {
-        this.nav.push(SpiderDetailPage, { data: spider }, {}, undefined);
+        this._nav.push(SpiderDetailPage, { data: spider }, {}, undefined);
     }
 
 }

@@ -1,7 +1,5 @@
 import { Modal, NavController, NavParams, Page } from 'ionic-framework/ionic';
 import { Spider } from '../types';
-import CameraService from '../services/camera.service';
-import SpiderStorageService from '../services/spider-storage.service';
 import SpiderEditPage from './spider-edit.page';
 
 @Page({
@@ -12,9 +10,7 @@ export default class SpiderDetailPage {
     public model: Spider = <any>{};
 
     constructor(
-        private nav: NavController,
-        private camera: CameraService,
-        private storage: SpiderStorageService,
+        private _nav: NavController,
         _params: NavParams
     ) {
         console.log('SpiderDetailPage constructor');
@@ -22,18 +18,12 @@ export default class SpiderDetailPage {
     }
 
     public get imgurl() {
-        return this.model.img && `data:image/jpeg;base64,${this.model.img}`
+        return this.model.img && `data:image/jpeg;base64,${this.model.img}`;
     }
 
     editSpider() {
         let modal = Modal.create(SpiderEditPage, { data: this.model });
-        // modal.onDismiss(data => {
-        //     if (data) {
-        //         this.excludeTracks = data;
-        //         this.updateSchedule();
-        //     }
-        // });
-        this.nav.present(modal);
+        this._nav.present(modal);
     }
 
 }

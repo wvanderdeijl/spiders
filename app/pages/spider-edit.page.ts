@@ -20,7 +20,7 @@ export default class SpiderEditPage {
         private storage: SpiderStorageService,
         _params: NavParams
     ) {
-        console.log('SpiderDetailPage constructor');
+        console.log('SpiderEditPage constructor');
         if (_params.get('data')) {
             this.editmode = true; this.createmode = false;
             this.model = _params.get('data');
