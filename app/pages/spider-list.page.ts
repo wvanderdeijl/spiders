@@ -15,7 +15,7 @@ export default class SpiderListPage {
     ) { }
 
     onPageLoaded() {
-        this._storage.data$.subscribe(spiders => this.model = spiders);
+        return this._storage.get().then(spiders => this.model = spiders);
     }
 
     gotoAddSpider() {

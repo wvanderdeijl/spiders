@@ -22,7 +22,7 @@ export default class SpeciesSelectPage {
 
     onPageLoaded() {
         console.log('SpeciesSelect page loaded');
-        this._storage.data$.subscribe(species => {
+        return this._storage.get().then(species => {
             this._alldata = species;
             this.search();
         });
@@ -36,16 +36,20 @@ export default class SpeciesSelectPage {
 
     deleteSpecies(slidingItem: ItemSliding, genus: Genus, species: string) {
         slidingItem.close();
-        this._storage.data$.subscribe(store => {
-            store.forEach((s, idx) => {
-                if (s.genus === genus.name && s.name === species) {
-                    this._storage.remove(idx);
+        return this._storage.get()
+            .then(store => {
+                for (let idx = 0; idx < store.length; idx++) {
+                    if (store[idx].genus === genus.name && store[idx].name === species) {
+                        return this._storage.remove(idx);
+                    }
                 }
-            });
-        }).unsubscribe();
+                return Promise.reject('species not found');
+            })
+            .then(() => this.search());
     }
 
     search() {
+        console.log('searching');
         this.model = this._alldata
             .filter(s => !this.queryText ||
                 s.genus.toLowerCase().indexOf(this.queryText.toLowerCase()) !== -1 ||

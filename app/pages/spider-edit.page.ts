@@ -32,12 +32,12 @@ export default class SpiderEditPage {
 
     save() {
         if (this.createmode) {
-            this.storage.add(this.model);
+            this.nav.pop();
+            return this.storage.add(this.model);
         }
         if (this.editmode) {
             console.log('TODO: add or replace');
         }
-        this.nav.pop();
     }
 
     selectSpecies() {
