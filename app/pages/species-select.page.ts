@@ -1,16 +1,19 @@
 import { ItemSliding, NavController, NavParams, Page } from 'ionic-framework/ionic';
-import { Spider, Species } from '../types';
+import { Genus, Species, Spider } from '../types';
 import SpeciesStorageService from '../services/species-storage.service';
+import FilterSpeciesPipe from '../pipes/species-filter.pipe';
 
-
-@Page({ templateUrl: 'build/pages/species-select.page.html' })
+@Page({
+    templateUrl: 'build/pages/species-select.page.html',
+    pipes: [FilterSpeciesPipe]
+})
 export default class SpeciesSelectPage {
 
-    public model: Genus[];
+    public model: Species[];
     public queryText = '';
 
-    private _alldata: Species[];
-    private _spider: Spider;
+    // TODO: modal output parameter
+    private _spider: Spider; // input param where we need to set genus/species on
 
     constructor(
         private _nav: NavController,
@@ -22,10 +25,7 @@ export default class SpeciesSelectPage {
 
     onPageLoaded() {
         console.log('SpeciesSelect page loaded');
-        return this._storage.get().then(species => {
-            this._alldata = species;
-            this.search();
-        });
+        return this._storage.get().then(species => this.model = species);
     }
 
     selectSpecies(genus: Genus, species: string) {
@@ -45,33 +45,14 @@ export default class SpeciesSelectPage {
                 }
                 return Promise.reject('species not found');
             })
-            .then(() => this.search());
-    }
-
-    search() {
-        console.log('searching');
-        this.model = this._alldata
-            .filter(s => !this.queryText ||
-                s.genus.toLowerCase().indexOf(this.queryText.toLowerCase()) !== -1 ||
-                s.name.toLowerCase().indexOf(this.queryText.toLowerCase()) !== -1)
-            .reduce((g, s) => {
-                if (g.length === 0 || g.slice(-1)[0].name !== s.genus) {
-                    g.push({ name: s.genus, species: [s.name] });
-                } else {
-                    g.slice(-1)[0].species.push(s.name);
-                }
-                return g;
-            }, <Genus[]>[]);
+            .then(() => this._storage.get())
+            // FIXME: without cloning the array, angular doesn't detect changes
+            // with cloning, an exception is thrown (sometimes)
+            .then(s => this.model = s.slice());
     }
 
     addSpecies() {
         throw new Error('not yet implemented');
     }
 
-}
-
-// grouped species as we expose them to the view
-interface Genus {
-    name: string;
-    species: string[];
 }

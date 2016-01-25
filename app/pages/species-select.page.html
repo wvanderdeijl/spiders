@@ -2,11 +2,11 @@
     <ion-title>Select Species</ion-title>
 </ion-navbar>
 
-<ion-content class="speciesselect">
-    <ion-searchbar [(ngModel)]="queryText" (input)="search()" placeholder="   Search"></ion-searchbar>
+<ion-content class="species-select">
+    <ion-searchbar [(ngModel)]="queryText" placeholder="   Search"></ion-searchbar>
 
     <ion-list>
-        <ion-item-group *ngFor="#genus of model">
+        <ion-item-group *ngFor="#genus of model | filterSpecies:queryText">
             <ion-item-divider sticky>{{genus.name | uppercase}}</ion-item-divider>
 
             <ion-item-sliding *ngFor="#species of genus.species" #slidingItem>
