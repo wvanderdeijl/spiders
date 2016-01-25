@@ -58,7 +58,16 @@ export default class SpiderEditPage {
 
     private getPicture(sourceType: number) {
         return this.camera.getPicture({
-            sourceType, destinationType: Camera.DestinationType.DATA_URL, targetWidth: 1334, targetHeight: 1334
+            sourceType,
+            destinationType: Camera.DestinationType.DATA_URL,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            mediaType: Camera.MediaType.PICTURE,
+            correctOrientation: true,
+            saveToPhotoAlbum: false,
+            cameraDirection: Camera.Direction.BACK,
+            targetWidth: 1334,
+            targetHeight: 1334
         })
             .then((image: string) => {
                 console.log('got a picture');
